@@ -66,9 +66,9 @@ namespace Advantage.API
             {
                 routes.MapRoute(name: "default", template: "{controller=Home}/{action=Index}/{id?}");
             });
-            //Apicontext apicontext = new Apicontext();
+            //Apicontext apicontext = new Apicontext(b);
             //DataSeed dataseed = new DataSeed(apicontext);
-            //dataseed.SeedData(20,1000);
+            //dataseed.SeedData(20, 1000);
 
         }
     }

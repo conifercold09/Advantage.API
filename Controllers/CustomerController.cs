@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Advantage.API.Data;
 using Advantage.API.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,10 +13,13 @@ namespace Advantage.API.Controllers
     {
 
         private readonly Apicontext _apiContext;
+       
 
         public CustomerController(Apicontext context)
         {
              _apiContext = context;
+            DataSeed _dataseed = new DataSeed(_apiContext);
+            _dataseed.SeedData(100, 2000);
         }
         // GET: api/<Customer>
         [HttpGet]
