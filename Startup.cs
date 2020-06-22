@@ -66,10 +66,26 @@ namespace Advantage.API
             {
                 routes.MapRoute(name: "default", template: "{controller=Home}/{action=Index}/{id?}");
             });
-            //Apicontext apicontext = new Apicontext(b);
+
+            UpdateDatabase(app);
+           // Apicontext apicontext = new Apicontext();
             //DataSeed dataseed = new DataSeed(apicontext);
             //dataseed.SeedData(20, 1000);
 
+        }
+
+        private void UpdateDatabase(IApplicationBuilder app)
+        {
+            using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
+            {
+                using (var context = serviceScope.ServiceProvider.GetService<Apicontext>())
+                {
+                    context.Database.Migrate();
+                    DataSeed dataseed = new DataSeed(context);
+                    dataseed.SeedData(100,5000);
+
+                }
+            }
         }
     }
 }

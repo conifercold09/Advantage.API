@@ -2,6 +2,7 @@
 using System.Linq;
 using Advantage.API.Data;
 using Advantage.API.Models;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 
@@ -9,6 +10,7 @@ namespace Advantage.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [EnableCors("CorsPolicy")]
     public class CustomerController : Controller
     {
 
@@ -19,7 +21,7 @@ namespace Advantage.API.Controllers
         {
              _apiContext = context;
             DataSeed _dataseed = new DataSeed(_apiContext);
-            _dataseed.SeedData(100, 2000);
+            _dataseed.SeedData(1000, 5000);
         }
         // GET: api/<Customer>
         [HttpGet]

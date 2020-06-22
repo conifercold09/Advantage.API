@@ -12,7 +12,7 @@ namespace Advantage.API.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class AdvantageAPIController : ControllerBase
+    public class weatherforecastController : ControllerBase
     {
         private Apicontext _apiContext;
 
@@ -34,12 +34,12 @@ namespace Advantage.API.Controllers
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
         };
 
-        private readonly ILogger<AdvantageAPIController> _logger;
+        private readonly ILogger<weatherforecastController> _logger;
 
-        public AdvantageAPIController(ILogger<AdvantageAPIController> logger)
-        {
-            _logger = logger;
-        }
+        //public weatherforecastController(ILogger logger)
+        //{
+        //    _logger = logger;
+        //}
 
         [HttpGet]
         public IEnumerable<WeatherForecast> Get()
